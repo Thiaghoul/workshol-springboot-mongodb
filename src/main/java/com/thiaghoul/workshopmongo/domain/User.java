@@ -14,6 +14,7 @@ public class User implements Serializable {
     //attributes
     @Id
     private String id;
+
     private String name;
     private String email;
 
@@ -24,6 +25,7 @@ public class User implements Serializable {
         this.id = id;
         this.name = name;
         this.id = id;
+        this.email = email;
     }
 
     //getters and setters
