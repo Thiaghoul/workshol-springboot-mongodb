@@ -2,6 +2,7 @@ package com.thiaghoul.workshopmongo.config;
 
 import com.thiaghoul.workshopmongo.domain.Post;
 import com.thiaghoul.workshopmongo.domain.User;
+import com.thiaghoul.workshopmongo.dto.AuthorDTO;
 import com.thiaghoul.workshopmongo.repositories.PostRepository;
 import com.thiaghoul.workshopmongo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +35,11 @@ public class Instantiation implements CommandLineRunner {
         User alex = new User(null, "Alex Green", "alex@gmail.com");
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
 
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "partiu viagem", "Vou viajar para são paulo. Abraços!", maria);
-        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bomdia", "Acordei feliz hoje!", maria);
-
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
+        Post post1 = new Post(null, sdf.parse("21/03/2018"), "partiu viagem", "Vou viajar para são paulo. Abraços!", new AuthorDTO(maria));
+        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bomdia", "Acordei feliz hoje!", new AuthorDTO(alex));
+
         postRepository.saveAll(Arrays.asList(post1, post2));
     }
 }
