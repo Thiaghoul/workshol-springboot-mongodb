@@ -3,6 +3,7 @@ package com.thiaghoul.workshopmongo.config;
 import com.thiaghoul.workshopmongo.domain.Post;
 import com.thiaghoul.workshopmongo.domain.User;
 import com.thiaghoul.workshopmongo.dto.AuthorDTO;
+import com.thiaghoul.workshopmongo.dto.CommentDTO;
 import com.thiaghoul.workshopmongo.repositories.PostRepository;
 import com.thiaghoul.workshopmongo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,15 @@ public class Instantiation implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
 
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "partiu viagem", "Vou viajar para são paulo. Abraços!", new AuthorDTO(maria));
-        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bomdia", "Acordei feliz hoje!", new AuthorDTO(alex));
+        Post post1 = new Post(null, sdf.parse("21/03/2018"), "travelling", "I'm gonna travel to São Paulo. see ya!", new AuthorDTO(maria));
+        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Good morning", "woke up happy today!", new AuthorDTO(alex));
+
+        CommentDTO comment1 = new CommentDTO("Have a nice trip!",sdf.parse("21/03/2018"), new AuthorDTO(alex));
+        CommentDTO comment2 = new CommentDTO("Bon voyage!", sdf.parse("22/03/2018"), new AuthorDTO(bob));
+        CommentDTO comment3 = new CommentDTO("Have a great day", sdf.parse("23/03/2018"), new AuthorDTO(alex));
+
+        post1.getComments().addAll(Arrays.asList(comment1, comment2));
+        post2.getComments().add(comment3);
 
         postRepository.saveAll(Arrays.asList(post1, post2));
 
