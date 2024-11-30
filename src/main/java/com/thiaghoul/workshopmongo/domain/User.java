@@ -21,6 +21,10 @@ public class User implements Serializable {
     private String name;
     private String email;
 
+
+     // List of posts associated with the user.
+     // Annotated with @DBRef to create a reference to another collection (Post).
+     // The 'lazy = true' option ensures posts are loaded only when accessed (lazy loading).
     @DBRef(lazy = true)
     private List<Post> posts = new ArrayList<>();
 

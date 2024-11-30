@@ -4,7 +4,8 @@ import com.thiaghoul.workshopmongo.domain.User;
 
 import java.io.Serializable;
 
-//A user data transfer object
+// A Data Transfer Object (DTO) for the User entity.
+//Used to transfer user data in a simplified form, typically for API responses.
 public class UserDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+//This clas represents a Post entity in the mongodb database
+//@Document annotation used to indicate it is a MongoDB document
 @Document
 public class Post implements Serializable {
 
@@ -23,8 +25,13 @@ public class Post implements Serializable {
     private Date date;
     private String title;
     private String body;
+
+    //Author of the post represented as an AuthorDTO
+    //This provides partial about the author (id and name) to keep the post lightweight
     private AuthorDTO author;
 
+    //List of comments on the post, represented as CommentDTO objects.
+    //each comment contains partial information, such as the text and the author of the comment
     private List<CommentDTO> comments = new ArrayList<>();
 
     //constructors

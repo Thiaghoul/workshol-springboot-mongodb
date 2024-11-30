@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.util.Date;
 
+//DTO representing a comment in the system
 public class CommentDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -13,8 +14,11 @@ public class CommentDTO implements Serializable {
     private String text;
     private Date date;
 
+    //author of the comment, represented as an AuthorDTO
     private AuthorDTO author;
 
+
+    //constructors
     public CommentDTO(){}
 
     public CommentDTO(String text, Date date, AuthorDTO author){
@@ -23,6 +27,7 @@ public class CommentDTO implements Serializable {
         this.author = author;
     }
 
+    //getters and setters
     public String getText() {
         return text;
     }
@@ -39,7 +44,7 @@ public class CommentDTO implements Serializable {
         this.date = date;
     }
 
-    public AuthorDTO getAuthorDTO() {
+    public AuthorDTO getAuthor() {
         return author;
     }
 
